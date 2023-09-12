@@ -38,6 +38,7 @@ const TextInput = ({
     const [image, setImage] = useState(gokudont);
 
     useEffect(() => {
+        text = text.toLowerCase();
         if (text.length === 6 && !text.toLowerCase().includes("nigger"))
             return setHasWon(true);
 
@@ -46,13 +47,13 @@ const TextInput = ({
         } else if (text.includes("nigga") || text.includes("nigger")) {
             setImage(frames[4]);
             handleRacism();
-        } else if (text.includes("nigg")) {
+        } else if (text === "nigg") {
             setImage(frames[3]);
-        } else if (text.includes("nig")) {
+        } else if (text === "nig") {
             setImage(frames[2]);
-        } else if (text.includes("ni")) {
+        } else if (text === "ni") {
             setImage(frames[1]);
-        } else if (text.includes("n")) {
+        } else if (text === "n") {
             setImage(frames[0]);
         } else {
             setImage(cattu);
