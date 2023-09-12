@@ -1,31 +1,7 @@
 import { useEffect, useState } from "react";
-import cattu from "../assets/images/cat-tu.gif";
-// trollface frames
-import frame1 from "../assets/images/trollface-frames/frame1.jpg";
-import frame2 from "../assets/images/trollface-frames/frame2.jpg";
-import frame3 from "../assets/images/trollface-frames/frame3.jpg";
-import frame4 from "../assets/images/trollface-frames/frame4.jpg";
-import frame5 from "../assets/images/trollface-frames/frame5.jpg";
+
 import gokudont from "../assets/images/goku-dont-say-nword.jpg";
-
-// on racism images & gifs
-import minus30sc from "../assets/images/-30-social-credit.jpg";
-import minus69420sc from "../assets/images/-69420-social-credit.jpg";
-import fnafnword from "../assets/images/fnaf-did-u-say-nword.webp";
-import goku from "../assets/images/goku.jpeg";
-import sonic from "../assets/images/sonic.jpg";
-import therock from "../assets/gifs/the-rock.gif";
-import trollface from "../assets/gifs/trollface.gif";
-
-// on racism audio
-import boom from "../assets/audio/boom-super-bass.mp3";
-import prowler from "../assets/audio/goku-prowler.mp3";
-import fnaf from "../assets/audio/fnaf-hallway.mp3";
-import amongus from "../assets/audio/amongus-sus.mp3";
-import trollface_creepy from "../assets/audio/trollface-smile.mp3";
-import sc_siren from "../assets/audio/social-credits-siren.mp3";
-import spiderman from "../assets/audio/spiderman-migue-ohara.mp3";
-import chineseman from "../assets/audio/chinese-man.mp3";
+import cattu from "../assets/images/cat-tu.gif";
 
 import r from "../utils/randomize";
 import useLocalStorage from "use-local-storage";
@@ -34,35 +10,30 @@ import { Howl } from "howler";
 interface props {
     isRacist: boolean;
     setIsRacist: React.Dispatch<React.SetStateAction<boolean>>;
-
+    frames: string[];
     setHasWon: React.Dispatch<React.SetStateAction<boolean>>;
     text: string;
     setText: React.Dispatch<React.SetStateAction<string>>;
+
+    imageAudioCombos: {
+        img: string;
+        audio: any;
+    }[];
 }
 const TextInput = ({
+    frames,
     isRacist,
     setIsRacist,
     setHasWon,
     text,
     setText,
+    imageAudioCombos,
 }: props) => {
     const [socialCredits, setSocialCredits] = useLocalStorage(
         "social-credits",
         0
     );
     const [racistCount, setRacistCount] = useLocalStorage("racist-count", 0);
-    //  Trollface frames
-    const frames = [frame1, frame2, frame3, frame4, frame5];
-
-    const imageAudioCombos = [
-        { img: therock, audio: boom },
-        { img: goku, audio: prowler },
-        { img: fnafnword, audio: fnaf },
-        { img: trollface, audio: r([amongus, trollface_creepy]) },
-        { img: minus30sc, audio: r([sc_siren, chineseman]) },
-        { img: minus69420sc, audio: r([sc_siren, chineseman]) },
-        { img: sonic, audio: r([spiderman, prowler]) },
-    ];
 
     const [image, setImage] = useState(gokudont);
 

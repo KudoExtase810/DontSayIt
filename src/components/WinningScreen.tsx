@@ -1,28 +1,10 @@
-import onesc from "../assets/images/1-social-credit.jpg";
-import ftsc from "../assets/images/15-social-credit.jpg";
-import nnsc from "../assets/images/999999-social-credit.jpg";
-import smurfcat from "../assets/images/smurfcat.jpg";
-import lightskin from "../assets/images/lightskin.jpg";
-import malphitels from "../assets/images/malhpitels.jpg";
-import lightskinar from "../assets/images/lightskin-ar.jpg";
-
 import randomize from "../utils/randomize";
 
 import yay from "../assets/audio/kids-yay.mp3";
 import { useEffect } from "react";
 import useLocalStorage from "use-local-storage";
 
-const WinningScreen = () => {
-    const images = [
-        onesc,
-        ftsc,
-        nnsc,
-        smurfcat,
-        lightskin,
-        malphitels,
-        lightskinar,
-    ];
-
+const WinningScreen = ({ images }: { images: string[] }) => {
     const [socialCredits, setSocialCredits] = useLocalStorage(
         "social-credits",
         0
