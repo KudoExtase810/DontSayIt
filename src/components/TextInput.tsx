@@ -27,8 +27,7 @@ import sc_siren from "../assets/audio/social-credits-siren.mp3";
 import spiderman from "../assets/audio/spiderman-migue-ohara.mp3";
 import chineseman from "../assets/audio/chinese-man.mp3";
 
-import r from "unique-random-array";
-import ra from "../utils/randomize";
+import r from "../utils/randomize";
 import useLocalStorage from "use-local-storage";
 import { Howl } from "howler";
 
@@ -59,10 +58,10 @@ const TextInput = ({
         { img: therock, audio: boom },
         { img: goku, audio: prowler },
         { img: fnafnword, audio: fnaf },
-        { img: trollface, audio: ra([amongus, trollface_creepy]) },
-        { img: minus30sc, audio: ra([sc_siren, chineseman]) },
-        { img: minus69420sc, audio: ra([sc_siren, chineseman]) },
-        { img: sonic, audio: ra([spiderman, prowler]) },
+        { img: trollface, audio: r([amongus, trollface_creepy]) },
+        { img: minus30sc, audio: r([sc_siren, chineseman]) },
+        { img: minus69420sc, audio: r([sc_siren, chineseman]) },
+        { img: sonic, audio: r([spiderman, prowler]) },
     ];
 
     const [image, setImage] = useState(gokudont);
@@ -93,7 +92,7 @@ const TextInput = ({
     const handleRacism = () => {
         setIsRacist(true);
 
-        const randomCombo = r(imageAudioCombos as any)() as {
+        const randomCombo = r(imageAudioCombos) as {
             img: string;
             audio: string;
         };
